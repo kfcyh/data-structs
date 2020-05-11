@@ -1,4 +1,4 @@
-/**********顺序栈**********/
+/**********顺序队列**********/
 #include <cstdlib>
 #define MAXSIZE 10  //循环队列容量
 using namespace std;
@@ -30,47 +30,4 @@ inline T queue<T>::back() const
 {
 	if (_front == _rear)
 		return 0;
-	return data[(_rear - 1 + MAXSIZE) % MAXSIZE];
-}
-
-template<typename T>
-inline bool queue<T>::empty() const
-{
-	if (_front == _rear)
-		return true;
-	return false;
-
-}
-
-template<typename T>
-inline T queue<T>::front() const
-{
-	if (_front == _rear)
-		return 0;
-	return data[_front];
-}
-
-template<typename T>
-inline void queue<T>::pop()
-{
-	if (_front == _rear)
-		return;
-	_front = (_front + 1) % MAXSIZE;
-	_size--;
-}
-
-template<typename T>
-inline void queue<T>::push(T value)
-{
-	if ((_rear + 1) % MAXSIZE == _front)
-		return;
-	data[_rear] = value;
-	_rear = (_rear + 1) % MAXSIZE;
-	_size++;
-}
-
-template<typename T>
-inline int queue<T>::size() const
-{
-	return _size;
-}
+	return data[(_rear - 1 + MAXSIZE) % MAXSIZE]
